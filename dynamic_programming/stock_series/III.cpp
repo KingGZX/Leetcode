@@ -40,15 +40,22 @@ class Solution {
 public:
     /*
     dp思路：
-        用dp[i][0]来表示，第i天不进行任何操作时的最大利润
-        用dp[i][1]来表示，第i天把股票进行出售时的最大利润
-        
-        dp[i][0] = max(dp[i - 1][1])，第i天不进行操作，那么继承前面的操作的最大值
-
+        用buy1表示某一天进行第一次股票购买后所拥有的最大利润
+        用sell1表示某一天进行第一次股票抛售后所拥有的最大利润
+        buy2
+        sell2
+        分别就是进行第二次，转移思路比较简单，在代码里写出
     */
     int maxProfit(vector<int>& prices) {
         int days = prices.size();
-
+        int buy1 = -prices[0], sell1 = 0, buy2 = INT32_MIN, sell2 = 0;
+        for(int i = 1 ; i < days ; i ++){
+            buy1 = max(buy1, -prices[i]);    // buy1我们始终保持自己用最低的价格进行股票购入
+            sell1 = max(sell1, prices[i] + buy1);    // 卖出第一次的话就是和前面买进的价格相加(因为保留的是负数)即可
+            buy2 = max(buy2, sell1 - prices[i]);
+            sell2 = max(sell2, prices[i] + buy2);
+        }
+        return sell2;
     }
 };
 
