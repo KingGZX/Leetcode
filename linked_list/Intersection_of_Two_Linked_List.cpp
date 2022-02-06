@@ -64,6 +64,7 @@ public:
         while(p){
             while(q){
                 if(p == q){
+                    ans = p;
                     break;
                 }
                 q = q->next;
@@ -81,7 +82,7 @@ public:
         ListNode* q1 = headB;
         ListNode* q2 = headB;
         ListNode* ans = nullptr;
-        
+
     }
 };
 
