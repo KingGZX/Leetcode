@@ -75,14 +75,34 @@ public:
         }
         return ans;
     }
+    // 利用双指针法
+    /*
+    case 1：
+        headA 或者 headB 有一者为空，那么必不可能相交，直接返回nullptr
+    case2：
+        令pA = headA，pB = headB，pA不为空时就移动至pA->next，pB同理。
+        如果pA为空就移至headB，pB为空后移至headA。
+    
+    其实用到的证明思路和找入环口很像，证明：
+    A链表长度m，B链表长度n。
+    假设相交部分长度为c，A抛去相交部分是a，B抛开相交部分长度是b。显然有：
+    a + c = m ， b + c = n
+    1.m = n
+        1.1 有交点，那么a = b，那么两指针同时前进，必然会相遇
+        1.2 无交点，那么两指针会同时到达链表尾部，会因为两指针均为nullptr而退出循环返回nullptr
 
+    2. m != n
+        2.1 有交点，那么两指针必不会同时为null，且两指针均走过 a + b + c步后会在交点相遇
+        2.2 无交点，那么两指针会在同时走过 m + n 步后都变为nullptr而退出循环并返回nullptr
+    */
     ListNode *getIntersectionNode2(ListNode *headA, ListNode *headB){
-        ListNode* p1 = headA;
-        ListNode* p2 = headA;
-        ListNode* q1 = headB;
-        ListNode* q2 = headB;
-        ListNode* ans = nullptr;
-
+        if(!headA || !headB) return nullptr;
+        ListNode* pA = headA, *pB = headB;
+        while(pA != pB){
+            pA = (pA == nullptr) ? headB : pA->next;
+            pB = (pB == nullptr) ? headA : pB->next;
+        }
+        return pA;
     }
 };
 
