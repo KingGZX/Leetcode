@@ -33,15 +33,25 @@ public:
     ListNode* swapPairs(ListNode* head) {
         if(!head || !head->next) return head;
         ListNode* dummy = new ListNode;
-        ListNode* prev = head;
-        ListNode* nxt = head->next;
-        dummy->next = nxt;
-        while(nxt){
-            ListNode* temp = nxt->next;
-            nxt->next = prev;
-            prev->next = temp;
-            prev = temp;
-            nxt = temp->next;
+        ListNode* prev = head;                 
+        ListNode* nxt = head->next;    
+        ListNode* temp = dummy;
+        // 用一个指针保留上一次的接口，连接口
+        // 将prev和nxt全部转换为下一组要执行的交换结点
+        // 如果下一组的prev就为null 或者说 nxt为null 那么均可以直接链到prev上然后结束                    
+        while(prev){
+            ListNode* _prev = nxt->next;    // 下一组要交换的节点的前者
+            temp->next = nxt;
+            temp->next->next = prev;
+            temp = prev;
+            if(!_prev || !_prev->next){
+                temp->next = _prev;
+                break;
+            }
+            else{
+                prev = _prev;
+                nxt = _prev->next;
+            }
         }
         return dummy->next;
     }
