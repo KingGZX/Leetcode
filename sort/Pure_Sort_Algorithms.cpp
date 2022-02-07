@@ -13,6 +13,9 @@ class Basic_Sort_Algorithms{
 
         void heapify(int loc, int len);    // 调整成大顶堆抑或小顶堆的标准格式
         void heapsort();   // 
+
+        void merge();
+        void merge_sort();
 };
 
 template<typename T>
