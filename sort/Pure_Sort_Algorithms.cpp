@@ -8,14 +8,15 @@ class Basic_Sort_Algorithms{
         vector<T> arrays_to_be_sort;
         vector<T> sorted_array;
     public:
-        Basic_Sort_Algorithms<T>(const vector<T>& vec){arrays_to_be_sort = vec;};
+        Basic_Sort_Algorithms<T>(const vector<T>& vec):arrays_to_be_sort(vec),sorted_array(vec){};
+
         void show_sorted_arrays();
 
         void heapify(int loc, int len);    // 调整成大顶堆抑或小顶堆的标准格式
         void heapsort();   // 
 
-        void merge();
-        void merge_sort();
+        void merge(int left, int right, int mid);
+        void merge_sort(int left, int right);
 };
 
 template<typename T>
@@ -71,9 +72,49 @@ void Basic_Sort_Algorithms<T>::heapsort(){
     show_sorted_arrays();
 }
 
+template<typename T>
+void Basic_Sort_Algorithms<T>::merge(int left, int right, int mid){
+    // merge的过程就是合并两个有序数组，分别是[left, mid], [mid + 1, right]
+    int ptr1 = mid + 1, ptr2 = left;
+    int ptr = left;
+    while(ptr2 <= mid && ptr1 <= right){
+        if(arrays_to_be_sort[ptr2] <= arrays_to_be_sort[ptr1]){
+            sorted_array[ptr ++] = arrays_to_be_sort[ptr2 ++];
+        }
+        else{
+            sorted_array[ptr ++] = arrays_to_be_sort[ptr1 ++];
+        }
+    }
+    while(ptr2 <= mid){
+        sorted_array[ptr ++] = arrays_to_be_sort[ptr2 ++];
+    }
+    while(ptr1 <= right){
+        sorted_array[ptr ++] = arrays_to_be_sort[ptr1 ++];
+    }
+    for(int i = left ; i <= right ; i ++){
+        arrays_to_be_sort[i] = sorted_array[i];
+    }
+}
+
+template<typename T>
+void Basic_Sort_Algorithms<T>::merge_sort(int left, int right){
+    // 分治法
+    if(left == right) return;
+    int mid = (left + right) >> 1;
+    if(right > left){  
+        // 可以分解就继续分解
+        merge_sort(left, mid);
+        merge_sort(mid + 1, right);
+    }
+    merge(left, right, mid);
+}
+
 int main(){
     vector<int> vec{99, 23, 77, 0, 12, 56, 3};
     Basic_Sort_Algorithms<int> t(vec);
-    t.heapsort();
+    // t.heapsort();
+
+    t.merge_sort(0, 6);
+    t.show_sorted_arrays();
     return 0;
 }
