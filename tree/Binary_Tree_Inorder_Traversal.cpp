@@ -24,6 +24,7 @@ Q94
 
 #include <iostream>
 #include <vector>
+#include <stack>
 using namespace std;
 
 struct TreeNode {
@@ -40,9 +41,19 @@ public:
     // 中序遍历就是要求我们按照 左->根->右 顺序输出
     // 要求我们用非递归的方式实现
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> vec;
-        if(!root) return vec;
-        
+        vector<int> ans;
+        stack<TreeNode*> st;
+        while(root || !st.empty()){
+            while(root){    // 通过这一步把以root为根的向左深度递归下去的结点全部压栈
+                st.push(root);
+                root = root->left;
+            }
+            TreeNode* temp = st.top();  // 弹出了最左结点
+            st.pop();
+            ans.push_back(temp->val);
+            root = temp->right; // 访问右子树
+        }
+        return ans;
     }
 };
 
