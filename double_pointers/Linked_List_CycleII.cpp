@@ -60,7 +60,7 @@ public:
             }
             // if quick pointer dosen't go wrong then it's impossible that slow pointer gose wrong
             slow = slow->next;
-        }while(slow != quick)
+        }while(slow != quick);
         quick = head;
         while(quick != slow){
             quick = quick->next;
