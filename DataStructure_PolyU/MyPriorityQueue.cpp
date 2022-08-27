@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-// 突发奇想，简单实现int类型的优先队列
+// 突发奇想，简单实现int类型的优先队列          ----可以写成模板，即vector<T> vec,但请确保你的模板类T重载了比较符哦。
 class MyPriorityQueue{
 private:
     // 用容器vector作为构造完全二叉树的根基
