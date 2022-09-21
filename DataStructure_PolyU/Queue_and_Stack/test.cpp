@@ -1,14 +1,15 @@
 /*
  * @author: Zhexuan Gu
  * @Date: 2022-09-21 17:36:52
- * @LastEditTime: 2022-09-21 18:16:22
+ * @LastEditTime: 2022-09-21 20:50:09
  * @FilePath: /CPPprojects/Leetcode/DataStructure_PolyU/Queue_and_Stack/test.cpp
  * @Description: Please implement
  */
 
 
 #include <iostream>
-#include "stack.h"
+#include "myStack.h"
+#include "myStack.cpp"
 
 using namespace std;
 using namespace gzx_simple_stl;

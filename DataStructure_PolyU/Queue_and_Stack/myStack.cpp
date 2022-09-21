@@ -1,11 +1,14 @@
 /*
  * @author: Zhexuan Gu
  * @Date: 2022-09-21 16:00:28
- * @LastEditTime: 2022-09-21 18:25:08
+ * @LastEditTime: 2022-09-21 20:49:55
  * @FilePath: /CPPprojects/Leetcode/DataStructure_PolyU/Queue_and_Stack/myStack.cpp
  * @Description: Please implement
  */
-#include "stack.h"
+#ifndef _MYSTACK_CPP_J
+#define _MYSTACK_CPP_J
+
+#include "myStack.h"
 
 namespace gzx_simple_stl{
     template<typename T>
@@ -133,3 +136,5 @@ namespace gzx_simple_stl{
         MakeEmpty();
     }
 };
+
+#endif

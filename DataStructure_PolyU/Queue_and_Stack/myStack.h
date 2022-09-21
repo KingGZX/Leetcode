@@ -1,12 +1,12 @@
 /*
  * @author: Zhexuan Gu
  * @Date: 2022-09-21 15:37:05
- * @LastEditTime: 2022-09-21 18:25:04
- * @FilePath: /CPPprojects/Leetcode/DataStructure_PolyU/Queue_and_Stack/Stack.h
+ * @LastEditTime: 2022-09-21 20:50:51
+ * @FilePath: /CPPprojects/Leetcode/DataStructure_PolyU/Queue_and_Stack/myStack.h
  * @Description: a simple definition of stack
  */
-
-
+#ifndef _MYSTACK_H_J
+#define _MYSTACK_H_J
 #include "LinkNode.h"
 
 //using namespace gzx_simple_stl;
@@ -35,3 +35,5 @@ namespace gzx_simple_stl{
         void Copy(MyStack<T> oldStack, MyStack<T>& copy);
     };
 };
+
+#endif
