@@ -1,3 +1,11 @@
+/*
+ * @author: Zhexuan Gu
+ * @Date: 2022-08-26 10:41:07
+ * @LastEditTime: 2022-09-21 14:14:35
+ * @FilePath: /CPPprojects/Leetcode/DataStructure_PolyU/MyPriorityQueue.cpp
+ * @Description: Implement a STL(vector) based priority_queue 
+ */
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
