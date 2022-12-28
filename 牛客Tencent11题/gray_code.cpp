@@ -1,7 +1,7 @@
 /*
  * @author: Zhexuan Gu
  * @Date: 2022-12-28 10:40:40
- * @LastEditTime: 2022-12-28 12:07:55
+ * @LastEditTime: 2022-12-28 12:22:41
  * @FilePath: /CPPprojects/Leetcode/牛客Tencent11题/gray_code.cpp
  * @Description: Problem1
  */
@@ -98,3 +98,28 @@ int main(){
     }
     return 0;
 }
+
+
+/*
+我自己实际上对对称没理解到位，看了别人的java版本，才觉得那样更好，附上：
+public String[] GrayCode(int n) {
+ 
+	// produce 2^n grade codes
+    String[] graycode = new String[(int) Math.pow(2, n)];
+ 
+    if (n == 1) {
+    	graycode[0] = "0";
+    	graycode[1] = "1";
+        return graycode;
+    }
+ 
+    String[] last = GrayCode(n - 1);
+ 
+    for (int i = 0; i < last.length; i++) {
+    	graycode[i] = "0" + last[i];
+    	graycode[graycode.length - 1 - i] = "1" + last[i];
+    }
+ 
+    return graycode;
+}
+*/
