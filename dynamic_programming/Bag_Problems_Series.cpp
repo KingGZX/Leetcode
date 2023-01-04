@@ -1,4 +1,11 @@
 /*
+ * @author: Zhexuan Gu
+ * @Date: 2022-07-24 15:25:51
+ * @LastEditTime: 2023-01-03 10:52:07
+ * @FilePath: /CPPprojects/Leetcode/dynamic_programming/Bag_Problems_Series.cpp
+ * @Description: Please implement
+ */
+/*
 背包问题是一种组合优化的NP 完全问题：有N 个物品和容量为W 的背包，每个物品都有
 自己的体积w 和价值v，求拿哪些物品可以使得背包所装下物品的总价值最大。如果限定每种物
 品只能选择0 个或1 个，则问题称为0-1 背包问题；
@@ -22,6 +29,7 @@ class Solution{
             for(int i = 0 ; i < N ; i ++){    // 相当于一个选择过程
                 for(int j = W - 1 ; j >= weights[i] ; j --){     // 我们总是要去利用上一轮的最优子结构，
                                                         // 如果正循环岂不是把上一轮的最优子结构覆盖掉了？直接变成了本轮结果。
+                                                        // 正循环就会导致某些物品被选中多次
                     dp[j] = max(dp[j], dp[j - weights[i]] + values[i]);
                 }
             }     
