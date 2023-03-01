@@ -1,7 +1,7 @@
 /*
  * @author: Zhexuan Gu
  * @Date: 2023-01-16 10:22:49
- * @LastEditTime: 2023-01-16 11:42:28
+ * @LastEditTime: 2023-03-01 11:01:00
  * @FilePath: /CPPprojects/Leetcode/剑指Offer/n_dice.cpp
  * @Description: Please implement
  */
@@ -31,9 +31,9 @@ public:
             vector<double> prev = ans;
             ans.clear();
             ans.resize(5 * i + 1);
-            for(int j = i ; j <= 6 * i ; j ++){
-                for(int k = 1 ; k <= 6 && k < j ; k ++){
-                    if(j - k <= 6 * (i - 1) && j - k >= i - 1)
+            for(int j = i ; j <= 6 * i ; j ++){         // i颗骰子能组成的数值的范围
+                for(int k = 1 ; k <= 6 && k < j ; k ++){    // 去掉最后一颗骰子 (因为我们把问题视为 i-1(已知的子结构) + 一颗新骰子)
+                    if(j - k <= 6 * (i - 1) && j - k >= i - 1)  // j - k 为前 i-1骰子需要组成的数, 要在前 i-1 颗骰子能组成的最大最小范围之间
                         ans[j - i] += prev[j - k - (i - 1)] / 6;
                 }
             }
