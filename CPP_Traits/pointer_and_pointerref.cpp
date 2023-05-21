@@ -1,7 +1,7 @@
 /*
  * @author: Zhexuan Gu
  * @Date: 2023-05-16 16:19:12
- * @LastEditTime: 2023-05-16 16:28:51
+ * @LastEditTime: 2023-05-16 16:31:30
  * @FilePath: /CPPprojects/Leetcode/CPP_Traits/pointer_and_pointerref.cpp
  * @Description: Please implement
  */
@@ -15,6 +15,7 @@ struct Node
     Node():_data(0), next(nullptr){};
     Node(int val):_data(val), next(nullptr){};
     Node(const Node& node):_data(node._data), next(node.next){};
+    ~Node(){cout << "destruction, val is " << _data << endl;}
 };
 
 void insert_to_list(Node* &head, int val){
@@ -26,6 +27,7 @@ void insert_to_list(Node* &head, int val){
     Node* node = new Node(val);
     node->next = head;
     head = node;
+    delete node;
 }
 
 void show_list(Node* h){
